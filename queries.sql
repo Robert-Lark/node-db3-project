@@ -10,5 +10,10 @@ FROM "Order"
 JOIN "Shipper" ON "Order"."ShipVia" = "Shipper"."Id"
 WHERE "Order"."ShippedDate" < "2012-08-09"
 -- Display the name and quantity of the products ordered in order with Id 10251. Sort by ProductName. Shows 3 records.
-
+SELECT "Order"."Id", "Product"."ProductName", "OrderDetail"."Quantity"
+FROM "Order" 
+JOIN "OrderDetail" ON "OrderDetail"."OrderId" = "Order"."Id"
+JOIN "Product" ON "OrderDetail"."ProductId" = "Product"."Id"
+WHERE "Order"."Id" = 10251;
+ORDER BY "Product"."ProductName"
 -- Display the OrderID, Customer's Company Name and the employee's LastName for every order. All columns should be labeled clearly. Displays 16,789 records.
